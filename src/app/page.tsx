@@ -1,11 +1,13 @@
 import LoginComponet from "@/components/LoginComponet";
-import { fetchUser } from "@/lib/mongofunction";
 import UserListComponet from "@/components/UserListComponet";
 
 export default async function Home() {
   const users = await (
-    await fetch(`${process.env.LOCAL_URL}/api/users`)
+    await fetch(`${process.env.LOCAL_URL}/api/users`, {
+      cache: "no-store",
+    })
   ).json();
+
   // const users = await fetchUser();
 
   return (
